@@ -77,3 +77,39 @@ def int_to_ip(addr):
 
     return ipv4
 
+
+class Test(unittest.TestCase):
+    def test_task1(self):
+        self.assertLessEqual(filter_list([1, 2, 'a', 'b']), [1, 2])
+        self.assertLessEqual(filter_list([1, 'a', 'b', 0, 15]), [1, 0, 15])
+        self.assertLessEqual(filter_list([1, 2, 'aasf', '1', '123', 123]), [1, 2, 123])
+
+    def test_task2(self):
+        self.assertEqual(first_non_repeating_letter('stress'), 't')
+        self.assertEqual(first_non_repeating_letter('sTreSS'), 'T')
+        self.assertEqual(first_non_repeating_letter('ABBA'), '')
+
+    def test_task3(self):
+        self.assertEqual(digital_root(16), 7)
+        self.assertEqual(digital_root(942), 6)
+        self.assertEqual(digital_root(493193), 2)
+
+    def test_task4(self):
+        self.assertEqual(count_pairs_with_sum([1, 3, 6, 2, 2, 0, 4, 5], 5), 4)
+        self.assertEqual(count_pairs_with_sum([1, 3, 6, 2, 2, 0, 4, 5], 6), 4)
+        self.assertEqual(count_pairs_with_sum([1, 3, 6, 2, 2, 0, 4, 5], -5), 0)
+
+    def test_task5(self):
+        self.assertEqual(meeting('Fred:Corwill;Wilfred:Corwill;Barney:TornBull;Betty:Tornbull;Bjon:Tornbull;Raphael:Corwill;Alfred:Corwill'), '(CORWILL, ALFRED)(CORWILL, FRED)(CORWILL, RAPHAEL)(CORWILL, WILFRED)(TORNBULL, BARNEY)(TORNBULL, BETTY)(TORNBULL, BJON)')
+        self.assertEqual(meeting('Anna:Likhachova;Ivan:Sierov;Misha:Perviy;Andriy:Shevtsov'), '(LIKHACHOVA, ANNA)(PERVIY, MISHA)(SHEVTSOV, ANDRIY)(SIEROV, IVAN)')
+        self.assertEqual(meeting('Charlie:Smith;Bob:Marley;Alisa:Ivanova'), '(IVANOVA, ALISA)(MARLEY, BOB)(SMITH, CHARLIE)')
+
+    def test_extratask1(self):
+        self.assertEqual(next_bigger_number(12), 21)
+        self.assertEqual(next_bigger_number(513), 531)
+        self.assertEqual(next_bigger_number(2017), 2071)
+
+    def test_extratask2(self):
+        self.assertEqual(int_to_ip(2149583361), '128.32.10.1')
+        self.assertEqual(int_to_ip(32), '0.0.0.32')
+        self.assertEqual(int_to_ip(0), '0.0.0.0')
